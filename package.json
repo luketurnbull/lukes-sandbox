@@ -1,0 +1,11 @@
+{
+  "name": "lukes-sandbox",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:backend": "yarn workspace @lukes-sandbox/cms develop",
+    "dev:frontend": "yarn workspace @lukes-sandbox/frontend dev"
+  }
+}
