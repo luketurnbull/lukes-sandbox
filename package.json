@@ -5,7 +5,17 @@
     "packages/*"
   ],
   "scripts": {
+    "dev:all": ". ~/.nvm/nvm.sh && nvm use && concurrently \"yarn dev:backend\" \"yarn dev:frontend\" && \"yarn generate:types:watch\"",
     "dev:backend": "yarn workspace @lukes-sandbox/cms develop",
-    "dev:frontend": "yarn workspace @lukes-sandbox/frontend dev"
+    "dev:frontend": "yarn workspace @lukes-sandbox/frontend dev",
+    "generate:types": "graphql-codegen --config codegen.yml",
+    "generate:types:watch": "graphql-codegen --config codegen.yml --watch"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript": "^4.0.6",
+    "@graphql-codegen/typescript-operations": "^4.2.0",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "concurrently": "^8.2.2"
   }
 }

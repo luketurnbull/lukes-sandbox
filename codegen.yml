@@ -1,0 +1,7 @@
+overwrite: true
+schema: "http://localhost:1337/graphql" # replace with your Strapi server URL
+generates:
+  packages/types/src/generated/index.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
