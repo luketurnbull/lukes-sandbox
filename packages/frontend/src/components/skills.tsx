@@ -1,5 +1,7 @@
 import React from "react";
-import { SkillEntity } from "../../../types/src/generated";
+import { SkillEntity } from "@/lib/constants/types/cms";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 type SkillsProps = {
   skills: SkillEntity[];
@@ -14,11 +16,10 @@ function Skills({ skills }: SkillsProps) {
           const skillName = skill.attributes?.name;
 
           return (
-            <div
-              key={skill.id}
-              className="p-4 bg-primary drop-shadow-sm rounded-md whitespace-nowrap hover:bg-primary/85 hover:cursor-pointer transition-colors"
-            >
-              <span className="text-primary-foreground">{skillName}</span>
+            <div key={skill.id} className="whitespace-nowrap">
+              <Link href={`/skills/${skill.id}`}>
+                <Button>{skillName}</Button>
+              </Link>
             </div>
           );
         })}

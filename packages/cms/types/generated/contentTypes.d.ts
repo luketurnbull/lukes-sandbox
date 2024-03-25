@@ -878,7 +878,7 @@ export interface ApiSkillSkill extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
     projects: Attribute.Relation<
       'api::skill.skill',
       'manyToMany',

@@ -1,40 +1,7 @@
 import { getClient } from "@/lib/apolloClient";
-import { gql } from "@apollo/client";
-import {
-  ProjectEntity,
-  SkillEntity,
-  SkillEntityResponseCollection,
-} from "../../../types/src/generated";
+import { SkillEntityResponseCollection } from "@/lib/constants/types/cms";
 import Skills from "@/components/skills";
-
-const GET_SKILLS = gql`
-  query GetSkills {
-    skills {
-      data {
-        id
-        attributes {
-          name
-          projects {
-            data {
-              attributes {
-                name
-                experience {
-                  data {
-                    attributes {
-                      name
-                      startDate
-                      endDate
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import { GET_SKILLS } from "@/lib/queries/getSkills";
 
 export default async function Home() {
   const {
