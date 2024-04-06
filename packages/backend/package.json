@@ -1,4 +1,18 @@
 {
+  "name": "@lukes-sandbox/backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Strapi application",
+  "license": "MIT",
+  "author": {
+    "name": "Luke Turnbull"
+  },
+  "scripts": {
+    "build": "strapi build",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi"
+  },
   "dependencies": {
     "@strapi/plugin-cloud": "4.21.1",
     "@strapi/plugin-graphql": "^4.21.1",
@@ -14,26 +28,12 @@
     "react-router-dom": "5.3.4",
     "styled-components": "5.3.3"
   },
-  "name": "backend",
-  "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
-  "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
-  },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "c86edb91-c230-4afd-a1f4-21967cc7f495",
-    "template": "@strapi/template-blog"
-  },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "strapi": {
+    "uuid": "c86edb91-c230-4afd-a1f4-21967cc7f495",
+    "template": "@strapi/template-blog"
+  }
 }

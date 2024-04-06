@@ -91,7 +91,7 @@ async function uploadFile(file, name) {
 async function createEntry({ model, entry }) {
   try {
     // Actually create the entry in Strapi
-    await strapi.entityService.create(`api::${model}.${model}`, {
+    await strapi.entityService.create(`api::${model}.${model}` as any, {
       data: entry,
     });
   } catch (error) {

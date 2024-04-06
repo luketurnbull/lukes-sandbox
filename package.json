@@ -1,12 +1,15 @@
 {
   "name": "lukes-sandbox",
   "private": true,
+  "author": {
+    "name": "Luke Turnbull"
+  },
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "dev:all": ". ~/.nvm/nvm.sh && nvm use && concurrently \"yarn dev:backend\" \"yarn dev:frontend\" && \"yarn generate:types:watch\"",
-    "dev:backend": "yarn workspace @lukes-sandbox/cms develop",
+    "dev:backend": "yarn workspace @lukes-sandbox/backend develop",
     "dev:frontend": "yarn workspace @lukes-sandbox/frontend dev",
     "generate:types": "graphql-codegen --config codegen.yml",
     "generate:types:watch": "graphql-codegen --config codegen.yml --watch"
