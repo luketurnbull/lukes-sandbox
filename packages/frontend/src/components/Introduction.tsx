@@ -13,10 +13,10 @@ export default function Introduction() {
     <Section>
       <div className="p-5 md:p-10 flex flex-col md:flex-row md:w-[62.5rem]">
         <div className="inline-flex flex-col md:pr-14 text-center md:text-left">
-          <h1 className="text-5xl md:text-7xl font-bold text-darkBlue">
+          <h1 className="text-5xl md:text-7xl font-bold text-pickledBluewood">
             Luke&#39;s Sandbox
           </h1>
-          <p className="mt-4 text-base md:text-lg text-darkBlue">
+          <p className="mt-4 text-base md:text-lg text-pickledBluewood">
             Welcome to my sandbox. This is where I play with new technologies
             and ideas.
           </p>

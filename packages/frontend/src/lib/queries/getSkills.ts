@@ -12,19 +12,11 @@ export const GET_SKILLS = gql`
         id
         attributes {
           name
-          projects {
+          yearsOfExperience
+          icon {
             data {
               attributes {
-                name
-                experience {
-                  data {
-                    attributes {
-                      name
-                      startDate
-                      endDate
-                    }
-                  }
-                }
+                url
               }
             }
           }

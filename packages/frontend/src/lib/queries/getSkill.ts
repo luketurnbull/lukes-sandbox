@@ -12,6 +12,13 @@ export const GET_SKILL = gql`
       data {
         attributes {
           name
+          icon {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
         }
       }
     }

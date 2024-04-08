@@ -24,8 +24,14 @@
     --input: 23 23% 50%;
     --ring: 23 100% 66.7%;
     --radius: 0.3rem;
-    --dark-blue: 203 30% 26%;
+    --atomic-tangerine: 23 100% 67%;
+    --froly: 358 78% 69%;
+    --rose-quartz: 331 42% 58%;
+    --trendy-pink: 279 21% 48%;
+    --blue-bayoux: 224 25% 39%;
+    --pickled-bluewood: 203 30% 26%;
   }
+
   .dark {
     --background: 23 23% 10%;
     --foreground: 23 5% 90%;
@@ -47,6 +53,12 @@
     --input: 23 23% 50%;
     --ring: 23 100% 66.7%;
     --radius: 0.3rem;
+    --atomic-tangerine: 23 100% 67%;
+    --froly: 358 78% 69%;
+    --rose-quartz: 331 42% 58%;
+    --trendy-pink: 279 21% 48%;
+    --blue-bayoux: 224 25% 39%;
+    --picked-bluewood: 203 30% 26%;
   }
 }
 
