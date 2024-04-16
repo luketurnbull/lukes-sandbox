@@ -1,29 +1,32 @@
-import React from "react";
-import { SkillEntity } from "@/lib/constants/types/cms";
-import { Button } from "./ui/button";
-import Link from "next/link";
+"use client";
+
+import React, { useState, useMemo } from "react";
+import SkillsCircle, { Skill } from "./SkillsCircle";
+import SkillInformation from "./SkillInformation";
 
 type SkillsProps = {
-  skills: SkillEntity[];
+  skills: Skill[];
 };
 
 function Skills({ skills }: SkillsProps) {
-  return (
-    <div>
-      <h2 className="text-2xl mt-6">Skills</h2>
-      <div className="flex flex-wrap gap-2 mt-2">
-        {skills.map((skill: SkillEntity) => {
-          const skillName = skill.attributes?.name;
+  const [currentSegmentHovered, setCurrentSegmentHovered] = useState<
+    number | null
+  >(null);
 
-          return (
-            <div key={skill.id} className="whitespace-nowrap">
-              <Link href={`/skills/${skill.id}`}>
-                <Button>{skillName}</Button>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
+  const selectedSkill = useMemo(() => {
+    if (currentSegmentHovered === null) return null;
+
+    return skills[currentSegmentHovered];
+  }, [currentSegmentHovered, skills]);
+
+  return (
+    <div className="flex flex-col sm:flex-row justify-center items-center gap-40 w-full">
+      <SkillInformation selectedSkill={selectedSkill} />
+      <SkillsCircle
+        skills={skills}
+        currentSegmentHovered={currentSegmentHovered}
+        setCurrentSegmentHovered={setCurrentSegmentHovered}
+      />
     </div>
   );
 }

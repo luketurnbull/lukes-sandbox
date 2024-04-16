@@ -5,17 +5,14 @@ import {
   SkillEntityResponseCollection,
 } from "@/lib/constants/types/cms";
 import { GET_SKILLS } from "@/lib/queries/getSkills";
-import SkillsCircle, { Skill } from "@/components/SkillsCircle";
+import Skills from "../Skills";
+import { Skill } from "../SkillsCircle";
 
 function shuffleArray<T>(array: T[]): T[] {
-  // Clone the array to avoid modifying the original array
   let shuffledArray = [...array];
 
   for (let i = shuffledArray.length - 1; i > 0; i--) {
-    // Pick a random index from 0 to i
     let j = Math.floor(Math.random() * (i + 1));
-
-    // Swap elements at indices i and j
     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
 
@@ -32,7 +29,7 @@ export default async function SkillsSection() {
   const skillsData: Skill[] = (await Promise.all(
     skills.data.map(async (skill: SkillEntity) => {
       if (skill && skill.attributes) {
-        // Download the image from the url
+        // Get image URL
         const iconUrl = skill.attributes?.icon?.data?.attributes?.url;
 
         // fetch the SVG
@@ -52,7 +49,7 @@ export default async function SkillsSection() {
 
   return (
     <Section>
-      <SkillsCircle skills={shuffledSkills} />
+      <Skills skills={shuffledSkills} />
     </Section>
   );
 }

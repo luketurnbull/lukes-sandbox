@@ -13,7 +13,12 @@ export type Skill = {
 
 export type SkillsCircleProps = {
   skills: Skill[];
+  currentSegmentHovered: number | null;
+  // eslint-disable-next-line no-unused-vars
+  setCurrentSegmentHovered(value: number | null): void;
 };
+
+const PADDING = 16;
 
 /**
  * Generates skill segments for a skills circle based on the provided skills
@@ -23,21 +28,19 @@ export type SkillsCircleProps = {
  */
 export default function SkillsCircle({
   skills,
+  currentSegmentHovered,
+  //
+  setCurrentSegmentHovered,
 }: SkillsCircleProps): JSX.Element {
   const { width, height } = useWindowSize();
-  const [currentSegmentHovered, setCurrentSegmentHovered] = useState<
-    number | null
-  >(null);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
   const handleDelayedHover = (value: number | null) => {
-    // Clear any existing timeout to ensure we don't have multiple timeouts running
     if (timeoutId) clearTimeout(timeoutId);
 
-    // Set a new timeout
     const newTimeoutId = setTimeout(() => {
       setCurrentSegmentHovered(value);
-    }, 30); // Delay of 2000 milliseconds (2 seconds)
+    }, 50);
 
     setTimeoutId(newTimeoutId);
   };
@@ -45,7 +48,12 @@ export default function SkillsCircle({
   // Calculate the circle size based on the window size
   const circleSize = useMemo(() => {
     if (width && height) {
-      return Math.min(width, height);
+      if (width < 640) {
+        return width - PADDING * 2;
+      }
+
+      const min = Math.min(width, height);
+      return min / 2;
     }
 
     return 0;
@@ -98,8 +106,8 @@ export default function SkillsCircle({
       // This example uses a simple square root function for a slight exponential effect
       const exponential = Math.sqrt(normalized);
 
-      const minRadius = circleSize / 8;
-      const maxRadius = circleSize / 4;
+      const minRadius = circleSize / 4;
+      const maxRadius = circleSize / 2;
 
       // Scale up to the desired range of radii
       const radius = minRadius + (maxRadius - minRadius) * exponential;
@@ -132,7 +140,7 @@ export default function SkillsCircle({
   }, [skills, segmentSize, radiusMultiplier]);
 
   return (
-    <div>
+    <div className="w-full sm:w-1/2 flex justify-center">
       <svg width={circleSize} height={circleSize}>
         <g
           key="skills"
@@ -145,7 +153,7 @@ export default function SkillsCircle({
                 index={index}
                 {...segment}
                 currentSegmentHovered={currentSegmentHovered}
-                setCurrentSegmentHovered={(value) => {
+                setCurrentSegmentHovered={(value: number | null) => {
                   handleDelayedHover(value);
                 }}
               />

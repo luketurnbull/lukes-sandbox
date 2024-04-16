@@ -1,54 +1,18 @@
 import * as d3 from "d3";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import React from "react";
-import parse, { Element, domToReact } from "html-react-parser";
+import EnhancedSVG from "./EnhancedSvg";
 
-interface EnhancedSVGProps {
-  svgString: string;
-  className: string;
-}
-
-function EnhancedSVG({ svgString, className }: EnhancedSVGProps): JSX.Element {
-  const options = {
-    replace: (domNode: any) => {
-      if (domNode instanceof Element) {
-        // Remove <title> tags entirely
-        if (domNode.name === "title") {
-          return <></>; // Return nothing for title, effectively removing it
-        }
-
-        // When encountering <path> elements, add the className
-        if (domNode.name === "path") {
-          const pathProps = domNode.attribs;
-          return <path {...pathProps} className={className} />;
-        }
-
-        // Optionally, handle the <svg> tag to remove or alter attributes but include its children
-        if (domNode.name === "svg") {
-          // Keep the children of the svg but ignore the svg tag itself and any attributes
-          // This effectively strips the <svg> and </svg> tags, but keeps everything inside
-          return <>{domToReact(domNode.children, options)}</>;
-        }
-      }
-    },
-  };
-
-  const content = parse(svgString, options);
-
-  return <>{content}</>;
-}
-
-// Create props for segment that take in the outerRadius, innerRadius, startAngle and endAngle
-export interface SegmentProps {
+export type SegmentProps = {
   outerRadius: number;
   startAngle: number;
   endAngle: number;
   icon: string;
   index: number;
   currentSegmentHovered: number | null;
-  //
+  // eslint-disable-next-line no-unused-vars
   setCurrentSegmentHovered: (value: number | null) => void;
-}
+};
 
 const INNER_RADIUS = 20;
 
@@ -119,6 +83,7 @@ export default function Segment({
         <EnhancedSVG
           svgString={icon}
           className="transition-all duration-300 fill-white"
+          isSvgRemoved={true}
         />
       </svg>
     </g>
