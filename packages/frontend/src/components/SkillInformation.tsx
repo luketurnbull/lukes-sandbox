@@ -6,11 +6,20 @@ type SkillInformationProps = {
   selectedSkill: Skill | null;
 };
 
+const SEGMENT_COLOURS = [
+  "bg-[#1C405F]",
+  "bg-[#224D6F]",
+  "bg-[#2F6182]",
+  "bg-[#33AADB]",
+  "bg-[#8ACCDB]",
+  "bg-[#BAF2F1]",
+];
+
 function SkillInformation({ selectedSkill }: SkillInformationProps) {
   return (
     <div className="w-full sm:w-1/2 relative">
       <div
-        className={`bg-blueBayoux p-8 rounded-r-lg absolute left-0 transition-transform duration-200 -translate-y-1/2 ${
+        className={`bg-[#224D6F] p-8 rounded-r-lg absolute left-0 transition-transform duration-200 -translate-y-1/2 ${
           selectedSkill ? "-translate-x-full" : "translate-x-0 delay-200"
         }`}
       >
@@ -33,21 +42,33 @@ function SkillInformation({ selectedSkill }: SkillInformationProps) {
         {selectedSkill && (
           <>
             <div className="mt-4 flex flex-row items-center">
-              <div className="w-11 h-11 mr-4 flex justify-center items-center bg-pickledBluewood rounded-full">
-                <div className="w-6 h-6">
+              <div className="flex justify-center items-center gap-5">
+                <div className="w-8 h-8">
                   <EnhancedSVG
                     className="fill-white"
                     svgString={selectedSkill.icon}
                   />
                 </div>
+                <p className="text-2xl font-bold text-white">
+                  {selectedSkill.name}
+                </p>
               </div>
-              <p className="text-2xl font-bold text-white">
-                {selectedSkill.name}
-              </p>
             </div>
-            <p className="mt-4 text-white">
-              {selectedSkill.yearsOfExperience} years of experience
-            </p>
+            <div>
+              <p className="mt-4 text-white">
+                {selectedSkill.yearsOfExperience}+ years of experience
+              </p>
+              <div className="flex flex-row gap-2 mt-2">
+                {Array(selectedSkill?.yearsOfExperience || 0)
+                  .fill(0)
+                  .map((_, index) => (
+                    <div
+                      key={index}
+                      className={`w-4 h-4 rounded-full bg-white mt-1`}
+                    />
+                  ))}
+              </div>
+            </div>
           </>
         )}
       </div>

@@ -14,6 +14,15 @@ export type SegmentProps = {
   setCurrentSegmentHovered: (value: number | null) => void;
 };
 
+const SEGMENT_COLOURS = [
+  "fill-[#1C405F]",
+  "fill-[#224D6F]",
+  "fill-[#2F6182]",
+  // "fill-[#33AADB]",
+  // "fill-[#8ACCDB]",
+  // "fill-[#BAF2F1]",
+];
+
 const INNER_RADIUS = 20;
 
 export default function Segment({
@@ -69,6 +78,8 @@ export default function Segment({
     return 30;
   }, [isHovering]);
 
+  const colour = SEGMENT_COLOURS[index % SEGMENT_COLOURS.length];
+
   return (
     <g
       className="group"
@@ -78,7 +89,7 @@ export default function Segment({
       onTouchEnd={() => setCurrentSegmentHovered(null)}
     >
       <path
-        className="transition-all duration-300 cursor-pointer fill-blueBayoux stroke-pickledBluewood stroke-2 group-hover:fill-atomicTangerine"
+        className={`transition-all duration-300 cursor-pointer ${colour} stroke-pickledBluewood stroke-2 group-hover:fill-atomicTangerine`}
         d={arc(segmentAttributes) || ""}
         ref={pathRef}
       />
