@@ -1,5 +1,5 @@
 import Section from "./Section";
-import { getClient } from "@/lib/apolloClient";
+import { NEXT_PUBLIC_STRAPI_URL, getClient } from "@/lib/apolloClient";
 import {
   SkillEntity,
   SkillEntityResponseCollection,
@@ -33,7 +33,7 @@ export default async function SkillsSection() {
         const iconUrl = skill.attributes?.icon?.data?.attributes?.url;
 
         // fetch the SVG
-        const response = await fetch(`http://localhost:1337${iconUrl}`);
+        const response = await fetch(`${NEXT_PUBLIC_STRAPI_URL}${iconUrl}`);
         const svg = await response.text();
 
         return {

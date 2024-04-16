@@ -1,8 +1,10 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 
-const STRAPI_GRAPHQL_URI =
-  process.env.NEXT_PUBLIC_STRAI_GRAPHQL_URI || "http://localhost:1337/graphql";
+export const NEXT_PUBLIC_STRAPI_URL =
+  process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337/";
+
+export const STRAPI_GRAPHQL_URI = `${NEXT_PUBLIC_STRAPI_URL}graphql`;
 
 export const { getClient } = registerApolloClient(() => {
   return new ApolloClient({
