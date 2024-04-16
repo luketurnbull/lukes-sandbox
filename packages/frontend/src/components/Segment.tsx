@@ -27,8 +27,18 @@ export default function Segment({
   setCurrentSegmentHovered,
 }: SegmentProps) {
   const pathRef = useRef<SVGCircleElement>(null);
-
   const isHovering = currentSegmentHovered === index;
+
+  const segmentAttributes = useMemo(() => {
+    return {
+      innerRadius: INNER_RADIUS,
+      outerRadius,
+      startAngle,
+      endAngle,
+      padAngle: 0.03,
+      cornerRadius: 5,
+    };
+  }, [endAngle, outerRadius, startAngle]);
 
   const arc = d3
     .arc()
@@ -39,7 +49,7 @@ export default function Segment({
     .padAngle(0.03)
     .cornerRadius(5);
 
-  const [centroidX, centroidY] = arc.centroid();
+  const [centroidX, centroidY] = arc.centroid(segmentAttributes);
 
   // Calculate the angle to the centroid
   const angleToCentroid = Math.atan2(centroidY, centroidX);
@@ -69,7 +79,7 @@ export default function Segment({
     >
       <path
         className="transition-all duration-300 cursor-pointer fill-blueBayoux stroke-pickledBluewood stroke-2 group-hover:fill-atomicTangerine"
-        d={arc()}
+        d={arc(segmentAttributes) || ""}
         ref={pathRef}
       />
       <svg

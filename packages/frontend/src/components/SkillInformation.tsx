@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Skill } from "./SkillsCircle";
-import parse from "html-react-parser";
 import EnhancedSVG from "./EnhancedSvg";
 
 type SkillInformationProps = {

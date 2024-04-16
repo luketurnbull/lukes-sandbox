@@ -31,7 +31,7 @@ export default function EnhancedSVG({
         if (isSvgRemoved && domNode.name === "svg") {
           // Keep the children of the svg but ignore the svg tag itself and any attributes
           // This effectively strips the <svg> and </svg> tags, but keeps everything inside
-          return <>{domToReact(domNode.children, options)}</>;
+          return <>{domToReact(domNode.children as any, options)}</>;
         }
       }
     },

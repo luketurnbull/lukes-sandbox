@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function DownButton() {
   return (
     <div className="bg-primary rounded-full p-5 translate-y-[-25%] hover:duration-500 text-white hover:cursor-pointer hover:animate-bounce">
