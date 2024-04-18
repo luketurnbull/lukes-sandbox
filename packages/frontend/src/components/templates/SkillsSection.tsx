@@ -48,7 +48,7 @@ export default async function SkillsSection() {
   const shuffledSkills = shuffleArray(skillsData);
 
   return (
-    <Section>
+    <Section id="skills">
       <Skills skills={shuffledSkills} />
     </Section>
   );

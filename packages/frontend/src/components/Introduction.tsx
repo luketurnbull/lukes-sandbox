@@ -11,7 +11,7 @@ import Section from "./templates/Section";
  */
 export default function Introduction() {
   return (
-    <Section>
+    <Section id="introduction" scrollToId="skills">
       <div className="p-5 md:p-10 flex flex-col md:flex-row md:w-[62.5rem]">
         <div className="inline-flex flex-col md:pr-14 text-center md:text-left">
           <h1 className="text-5xl md:text-7xl font-bold text-pickledBluewood">

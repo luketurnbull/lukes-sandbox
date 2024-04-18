@@ -1,16 +1,25 @@
-// import DownButton from "../DownButton";
+import DownButton from "../DownButton";
 
-export default function Section({ children }: { children: React.ReactNode }) {
+// Create Section props type
+export type SectionProps = {
+  id: string;
+  scrollToId?: string;
+  children: React.ReactNode;
+};
+
+export default function Section({ id, scrollToId, children }: SectionProps) {
   return (
-    <section className="relative">
+    <section className="relative" id={id}>
       <div className="h-dvh flex justify-center items-center pb-7">
         {children}
       </div>
-      {/* <div className="absolute bottom-6 w-full">
-        <div className="flex justify-center">
-          <DownButton />
+      {scrollToId && (
+        <div className="absolute bottom-6 w-full">
+          <div className="flex justify-center">
+            <DownButton idToScrollTo={scrollToId} />
+          </div>
         </div>
-      </div> */}
+      )}
     </section>
   );
 }
