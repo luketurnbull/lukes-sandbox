@@ -1,3 +1,4 @@
+import Link from "next/link";
 import GitHub from "./Icon/GitHub";
 import LinkedIn from "./Icon/LinkedIn";
 import Logo from "./Logo";
@@ -22,10 +23,14 @@ export default function Introduction() {
           </p>
           <ul className="inline-flex flex-row mt-5 justify-center md:justify-start">
             <li className="pr-5">
-              <GitHub />
+              <Link href="https://github.com/luketurnbull" target="_blank">
+                <GitHub />
+              </Link>
             </li>
             <li>
-              <LinkedIn />
+              <Link href="https://www.linkedin.com/in/lukedt/" target="_blank">
+                <LinkedIn />
+              </Link>
             </li>
           </ul>
         </div>

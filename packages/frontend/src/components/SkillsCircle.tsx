@@ -140,7 +140,7 @@ export default function SkillsCircle({
   }, [skills, segmentSize, radiusMultiplier]);
 
   return (
-    <div className="w-full sm:w-1/2 flex justify-center">
+    <div className="w-full flex justify-center">
       <svg width={circleSize} height={circleSize}>
         <g
           key="skills"

@@ -20,13 +20,17 @@ function Skills({ skills }: SkillsProps) {
   }, [currentSegmentHovered, skills]);
 
   return (
-    <div className="flex flex-col sm:flex-row justify-center items-center gap-40 w-full">
-      <SkillInformation selectedSkill={selectedSkill} />
-      <SkillsCircle
-        skills={skills}
-        currentSegmentHovered={currentSegmentHovered}
-        setCurrentSegmentHovered={setCurrentSegmentHovered}
-      />
+    <div className="w-screen h-dvh absolute overflow-hidden">
+      <div className="relative">
+        <SkillInformation selectedSkill={selectedSkill} />
+      </div>
+      <div className="flex justify-center items-center w-screen h-dvh">
+        <SkillsCircle
+          skills={skills}
+          currentSegmentHovered={currentSegmentHovered}
+          setCurrentSegmentHovered={setCurrentSegmentHovered}
+        />
+      </div>
     </div>
   );
 }
